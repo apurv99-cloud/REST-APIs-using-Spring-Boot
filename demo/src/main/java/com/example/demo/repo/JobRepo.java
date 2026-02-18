@@ -1,11 +1,12 @@
 package com.example.demo.repo;
 
-import com.example.demo.model.JobPost;
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.model.JobPost;
 
 @Repository
 public class JobRepo {
@@ -41,6 +42,36 @@ public class JobRepo {
                 jobs.add(job);
                 System.out.println(jobs);
 
+        }
+
+        public JobPost getJob(int postId) {
+                for (JobPost job : jobs) {
+                        if (job.getPostId() == postId)
+                                return job;
+                }
+                System.out.println("No such data found");
+                return null;
+
+        }
+
+        public void updateJob(JobPost jobPost) {
+                for (JobPost jobPost1 : jobs) {
+                        if (jobPost1.getPostId() == jobPost.getPostId()) {
+                                jobPost1.setPostProfile(jobPost.getPostProfile());
+                                jobPost1.setPostDesc(jobPost.getPostDesc());
+                                jobPost1.setReqExperience(jobPost.getReqExperience());
+                                jobPost1.setPostTechStack(jobPost.getPostTechStack());
+
+                        }
+                }
+        }
+
+        public void deleteJob(int postId) {
+                for (JobPost jobPost : jobs) {
+                        if (jobPost.getPostId() == postId) {
+                                jobs.remove(jobPost);
+                        }
+                }
         }
 
 }
