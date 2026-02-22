@@ -65,4 +65,11 @@ public class JobRestController {
     // return service.updateJob(jobpost);
     // }
 
+    @GetMapping("load")
+    public String loadData(){
+        service.load();
+        return "Success";
+
+    }
+
 }
